@@ -87,8 +87,8 @@ python manage.py runserver
 
 После запуска, проект будет доступен локально по адресам:
 
-- http://localhost:8000.swagger/ # путь для Swagger UI
-- http://localhost:8000//redoc/   # путь для Redoc
+- http://127.0.0.1:8000/swagger/ # путь для Swagger UI
+- http://127.0.0.1:8000/redoc/   # путь для Redoc
 - http://127.0.0.1:8000/api/phone_auth_html/ # путь апи, динамическое обновлдение кода и профиль при запросе по номеру телефона
 - http://127.0.0.1:8000/api/auth/ # авторизация
 - http://127.0.0.1:8000/api/profile/ # профиль
