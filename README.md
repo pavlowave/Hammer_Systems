@@ -112,5 +112,5 @@ Invite Code: # инвайт-код
 
 https://disk.yandex.ru/d/o4E_QB3BxldU6A
 
-## Задеплоил на pythonanywhere. Можнно сразу потестить
+## Задеплоил на pythonanywhere. Можно сразу потестить
 https://pavlowave.pythonanywhere.com/api/phone_auth_html/
