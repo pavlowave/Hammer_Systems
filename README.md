@@ -67,13 +67,12 @@ CREATE USER hammer_db WITH PASSWORD 'hammer_db';
 ```bash
 GRANT ALL PRIVILEGES ON DATABASE hammer_db TO hammer_db;
 ```
-суперправа:
+Cуперправа:
 ```bash
 ALTER USER hammer_db WITH SUPERUSER;
 ```
-```
 
-Сделайте тесты
+Сделайте тесты:
 ```bash
 python manage.py test
 ```
