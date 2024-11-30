@@ -27,8 +27,8 @@ venv\Scripts\activate
 ```
 Устанавливаем зависимости Django:
 ```bash
-cd backend
 pip install -r requirements.txt
+cd backend
 ```
 
 Создаем файл .env со следующим содержимым:
