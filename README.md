@@ -13,14 +13,18 @@
 
 
 ## Установка
+
+Клонируйте репозиторий:
+```bash
+git clone https://github.com/pavlowave/Hammer_Systems
+```
+
 Для Linux (и macOS):
-Создаем virtualenv и активируем его:
 ```bash
 mkvirtualenv venv
 workon venv
 ```
 для Windows:
-Создаем virtualenv и активируем его:
 ```bash
 python -m venv venv
 venv\Scripts\activate 
