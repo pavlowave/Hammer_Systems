@@ -11,7 +11,7 @@ DEBUG = os.getenv('DEBUG')
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'pavlowave.pythonanywhere.com']
 
 
 INSTALLED_APPS = [
