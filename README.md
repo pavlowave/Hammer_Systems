@@ -118,3 +118,5 @@ https://disk.yandex.ru/d/o4E_QB3BxldU6A
 
 ## Задеплоил на pythonanywhere. Можно сразу потестить
 https://pavlowave.pythonanywhere.com/api/phone_auth_html/
+
+Понимаю, что нет нормальной проверки номера телефона. Подразумеваем, что номера телефонов в верном формате. Так бы ипользовал библиотеку phonenumbers для проверки.
