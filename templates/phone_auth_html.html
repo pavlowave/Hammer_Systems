@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Authentication</title>
+</head>
+<body>
+    <h1>Авторизация по номеру телефона</h1>
+
+    <h2>1. Отправьте код подтверждения</h2>
+    <form id="send-code-form">
+        <label for="phone_number">Phone Number:</label>
+        <input type="text" id="phone_number" name="phone_number" required>
+        <button type="submit">Send Code</button>
+    </form>
+    <p id="send-code-result"></p>
+
+    <h2>2. Проверьте код</h2>
+    <form id="verify-code-form">
+        <label for="phone_number_verify">Phone Number:</label>
+        <input type="text" id="phone_number_verify" name="phone_number" required>
+
+        <label for="code">Verification Code:</label>
+        <input type="text" id="code" name="code" required>
+
+        <button type="submit">Verify</button>
+    </form>
+    <p id="verify-code-result"></p>
+
+    <h2>3. Профиль пользователя по номеру.</h2>
+    <form id="get-profile-form">
+        <label for="phone_number_profile">Phone Number:</label>
+        <input type="text" id="phone_number_profile" name="phone_number" required>
+        <button type="submit">Get Profile</button>
+    </form>
+    <p id="get-profile-result"></p>
+
+    <h2>4. Активируйте инвайт-код</h2>
+    <form id="activate-invite-form">
+        <label for="phone_number_invite">Phone Number:</label>
+        <input type="text" id="phone_number_invite" name="phone_number" required>
+
+        <label for="invite_code">Invite Code:</label>
+        <input type="text" id="invite_code" name="invite_code" required>
+
+        <button type="submit">Activate Code</button>
+    </form>
+    <p id="activate-invite-result"></p>
+
+    <script>
+        document.getElementById('send-code-form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const phoneNumber = document.getElementById('phone_number').value;
+            const response = await fetch('http://127.0.0.1:8000/api/auth/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ phone_number: phoneNumber }),
+            });
+
+            const result = await response.json();
+            document.getElementById('send-code-result').textContent = JSON.stringify(result);
+        });
+
+        document.getElementById('verify-code-form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const phoneNumber = document.getElementById('phone_number_verify').value;
+            const code = document.getElementById('code').value;
+
+            const response = await fetch('http://127.0.0.1:8000/api/auth/', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ phone_number: phoneNumber, code: parseInt(code) }),
+            });
+
+            const result = await response.json();
+            document.getElementById('verify-code-result').textContent = JSON.stringify(result);
+        });
+
+        document.getElementById('get-profile-form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const phoneNumber = document.getElementById('phone_number_profile').value;
+
+            const response = await fetch(`http://127.0.0.1:8000/api/profile/?phone_number=${encodeURIComponent(phoneNumber)}`, {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' },
+            });
+
+            const result = await response.json();
+            document.getElementById('get-profile-result').textContent = JSON.stringify(result);
+        });
+
+        document.getElementById('activate-invite-form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const phoneNumber = document.getElementById('phone_number_invite').value;
+            const inviteCode = document.getElementById('invite_code').value;
+
+            const response = await fetch('http://127.0.0.1:8000/api/profile/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ phone_number: phoneNumber, invite_code: inviteCode }),
+            });
+
+            const result = await response.json();
+            document.getElementById('activate-invite-result').textContent = JSON.stringify(result);
+        });
+    </script>
+</body>
+</html>
